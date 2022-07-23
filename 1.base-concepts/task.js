@@ -52,7 +52,7 @@ totalAmount = (payment * months).toFixed(2);
   return totalAmount;
 }
 
-// console.log(calculateTotalMortgage(10, 0, 50000, '2023 07 21'))
+console.log(calculateTotalMortgage(10, 0, 50000, '2023 07 21'))
 
 
 
