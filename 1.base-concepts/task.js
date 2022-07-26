@@ -18,7 +18,7 @@ function solveEquation(a, b, c) {
 function calculateTotalMortgage(percent, contribution, amount, date) {
   let totalAmount;
 
-  let arr1 = [['Проценты', percent], ['Взнос', contribution], ['Сумма', amount]];
+  let arr1 = [['Процентная ставка', percent], ['Начальный взнос', contribution], ['Общая стоимость', amount]];
 
 
   for (let i = 0; i < arr1.length; ++i) {
@@ -27,7 +27,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     // console.log(correctParameter)
     
     if (Number.isNaN(correctParameter) === true) {
-      console.log(`Параметр ${arr1[i][0]} некорректен, значение ${arr1[i][1]}`);
+      return (`Параметр "${arr1[i][0]}" содержит неправильное значение "${arr1[i][1]}"`);
     } else {
       arr1[i][1] = parseFloat(arr1[i][1]);
     }
@@ -42,10 +42,10 @@ let finalDate = new Date(date);
 months = (finalDate.getFullYear() - currentDate.getFullYear()) * 12 + (finalDate.getMonth() - currentDate.getMonth());
 
 let percentMonth = (percent / 100) / 12; 
-let payment = creditSum * (percentMonth + (percentMonth / (((1 + percentMonth)^months) - 1))) * 10;
+let payment = creditSum * (percentMonth + (percentMonth / (((1 + percentMonth) ** months) - 1)));
 
 
-totalAmount = (payment * months).toFixed(2);  
+totalAmount = +((payment * months).toFixed(2));  
   
 
 
