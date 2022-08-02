@@ -44,7 +44,7 @@ function makeWork(arrOfArr =  [[10, 10, 11], [20, 10]], worker) {
 
 // Задание 3
 
-function worker2(arr, getArrayParams) {
+function worker2(arr) {
   let maxMin = getArrayParams(arr);
   let diffMaxMin = Math.abs(maxMin.max - maxMin.min);
   return (diffMaxMin); 
