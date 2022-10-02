@@ -28,7 +28,7 @@ describe('Домашнее задание к лекции 5 «Классы»', (
       expect(printItem.state).toEqual(75);
     });
 
-    it('геттер для свойства state', () => {
+    it('геттер для свойства state', () => {.2
       printItem.state = 10;
       const spy = spyOnProperty(printItem, 'state', 'get').and.returnValue(10);
       expect(printItem.state).toBe(10);
