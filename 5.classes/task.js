@@ -89,7 +89,7 @@ addBook(book) {
 
 findBookBy(type, value) {
     
-    let findBook = this.books.find(item => item[type] === value); //вот здесь непонятно почему скобки а не точка
+    let findBook = this.books.find(item => item[type] === value); //
     
     if (findBook === undefined) {
         findBook = null;
@@ -139,3 +139,60 @@ findBookBy(type, value) {
 // console.log(library1.books);
 // console.log(library1.findBookBy("releaseDate", 1924));
 // library1.giveBookByName("Машина времени");
+
+
+// //задание 3
+
+  
+
+    
+class Student {
+    constructor(name, state) {
+        this.name = name;
+        this.state = {};
+ 
+    }
+    
+
+    
+    addMark(mark, subject) { 
+      // console.log(this.state[subject])
+        if(this.state[subject] === undefined) { 
+            this.state[subject] = [mark];  //добавить первый элемент в ключ-предмет
+        } else {
+            this.state[subject].push(mark);// добавить вторую и последующие оценки в массив
+        } 
+    }
+    
+  getAverageBySubject(subject1) {
+    if (this.state[subject1]) {
+      const avarage = (this.state[subject1].reduce((acc, item) => (acc += item), 0)) / this.state[subject1].length;
+       return (avarage);
+    } else {
+      console.log("Несуществующий предмет");
+    }
+  }
+
+  getAverage() {
+    
+    const subjects = Object.keys(this.state);
+    return subjects.reduce((acc, subject) => acc + this.getAverageBySubject(subject), 0) / subjects.length
+
+    
+  }
+ 
+}      
+   
+   
+
+const student = new Student("Олег Никифоров");
+student.addMark(5, "algebra");
+student.addMark(2, "algebra");
+student.addMark(3, "geo");
+student.addMark(3, "geo");
+//student.getAverageBySubject("bio"); // Несуществующий предмет.
+//student.getAverageBySubject("algebra"); // 
+
+console.log(student.getAverage());
+  console.log(student);
+//   console.log(student1.getAverage());
