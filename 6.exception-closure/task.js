@@ -1,21 +1,23 @@
 
 function parseCount(num) {
-    if (isNaN(Number.parseInt(num, 10))) {
-        const numError = new Error("Невалидное значение");
-        throw numError;
+    const count = Number.parseInt(num);
+    // console.log(count);
+    if (Number.isNaN(count)) {
+        throw  new Error("Невалидное значение");
+        
      
-    } else {
-        return Number.parseInt(num, 10);
-    }
+    } 
+        return Number.parseInt(num);
+    
 
 }
     
 
-console.log(parseCount('sdfnbks'));
+// console.log(parseCount('sdfnbks'));
 
-function validateCount(num1) {
+function validateCount(num) {
     try {
-        return parseCount(num1);
+        return parseCount(num);
     }
     catch(error) {
         return error;
@@ -43,7 +45,7 @@ class Triangle {
 
     getArea() {
         const halfPerimetr = 0.5 * this.getPerimeter();
-        const area = (Math.sqrt(halfPerimetr * (halfPerimetr - this.a) * (halfPerimetr - this.b) * (halfPerimetr - this.c))).toFixed(3);
+        const area = +(Math.sqrt(halfPerimetr * (halfPerimetr - this.a) * (halfPerimetr - this.b) * (halfPerimetr - this.c))).toFixed(3);
         return area;
     }
 }
@@ -54,9 +56,11 @@ function getTriangle(a, b, c) {
         return triangle1;
     }
     catch(err) {
-        const  error1 = function () {
+        const  error1 = function() {
             return "Ошибка! Треугольник не существует";
         }
+        
+        
         
         return {
             getPerimeter: error1,
@@ -67,5 +71,5 @@ function getTriangle(a, b, c) {
 
 
 
-const Triangle1 = new Triangle(2, 3, 4);
-console.log(Triangle1);
+// const Triangle1 = new Triangle(2, 3, 4);
+// console.log(Triangle1);
