@@ -14,8 +14,8 @@ class AlarmClock {
             console.error('Будильник с таким id уже существует.');
             return
         } else { 
-            const call1 = {time: time, callback: callback, id: callId}; //создаем новый звонок
-            this.alarmCollection.push(call1); //должен добавлять звонок в массив в массив
+            
+            this.alarmCollection.push({time, callback, id}); //должен добавлять звонок в массив в массив
             // console.log(this.alarmCollection + ' после вызова метода')
         } 
 
@@ -43,11 +43,11 @@ class AlarmClock {
     return `${hours}:${minutes}`;
     }
 
-   checkClock(time, callback, id) { //функция проверяет есть ли такое время в звонке
-     console.log(callback + ' проверка');
-            if (this.getCurrentFormattedTime() === time) {
+   checkClock(call) { //функция проверяет есть ли такое время в звонке
+    //  console.log(callback + ' проверка');
+            if (this.getCurrentFormattedTime() === call.time) {
               
-                return callback;              //должен браться колбэк и выдаваться из коллекции сообщение
+                call.callback();              //должен браться колбэк и выдаваться из коллекции сообщение
             } 
 
         } 
@@ -82,7 +82,7 @@ class AlarmClock {
 
 
     clearAlarms() {
-        this.stop;
+        this.stop();
         this.alarmCollection = [];
     }
 }
