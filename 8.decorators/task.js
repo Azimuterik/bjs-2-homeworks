@@ -2,26 +2,25 @@ function cachingDecoratorNew(func) {
   let cache = [];
   
   function wrapper(...args) {
-      const hash = args.join(','); // получаем правильный хэш
+      const hash = args.join(','); 
 
-     let objectInCache = cache.find((item) => item.hash === hash); // ищем элемент, хэш которого равен нашему хэшу ОН ИЩЕТ ТОЛЬКО ПЕРВЫЙ РАЗ, А ПОТОМ НЕ ИЩЕТ??? -------------------
+     let objectInCache = cache.find((item) => item.hash === hash); 
       console.log(objectInCache)
-      if (objectInCache) { // если элемент найден
-          console.log("Из кэша: " + objectInCache.result); //то берем значение из кеша
+      if (objectInCache) { 
+          console.log("Из кэша: " + objectInCache.result); 
           return "Из кэша: " + objectInCache.result;
 
       } 
      
       
-      let result = func.call(this, ...args); // в кэше результата нет - считаем результат
+      let result = func.call(this, ...args); 
       console.log(result + ' результат')
-      cache.push({hash, result}) ; // добавляем элемент с правильной структурой
+      cache.push({hash, result}) ; 
       console.log(cache, 'пушим в кэш');
       
       
       if (cache.length >= 5) { 
-        cache.shift() // ПОЧЕМУ НЕ ЗАХОДИТ В ЭТО УСЛОВИЕ, ХОТЯ CACHE УЖЕ БОЛЬШЕ 5 ??---------------
-        
+        cache.shift() 
       }
       console.log("Вычисляем: " + result);
       return "Вычисляем: " + result;  
